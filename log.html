@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="log.css">
+ 
+    <title>嗨购</title>
+</head>
+<script type="text/javascript">
+
+    function validate_username(username){
+
+        var nameReg=/^[a-zA-Z][0-9A-Za-z_]{1,19}$/;
+
+        if(username !="" && username.search(nameReg) != -1)
+        {
+            document.getElementById("test_user").innerHTML = "<font color='green' size='3px'>√用户名格式正确</font>";
+        }else{
+            document.getElementById("test_user").innerHTML = "<font color='red' size='3px'>用户名格式错误</font>";
+        alert("用户名由数字，下划线和字母组成，且第一个为字母!");
+        }
+    }
+  
+ 
+    function validate_password(password){
+
+        var passwordReg=/^[0-9A-Za-z]{8,20}$/;;
+        if(password != "" && password.search(passwordReg) != -1)
+        {
+            document.getElementById("test_pw").innerHTML = "<font color='green' size='3px'>√密码格式正确</font>";
+        }else{
+            document.getElementById("test_pw").innerHTML = "<font color='red' size='3px'>密码格式错误</font>";
+            alert("密码8-20位，由数字和字母组成!");
+        }
+    }
+
+function validate_form(){
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        var nameReg=/^[a-zA-Z][0-9A-Za-z_]{1,19}$/;
+        var passwordReg=/^[0-9A-Za-z]{8,20}$/;
+        
+        if(username != "" && emailReg.test(username)){
+            if(password !="" && passwordReg.test(password)){
+        
+                    alert("信息填写正确，可以正常提交！");
+                    console.log("信息填写正确，可以正常提交！");
+                    return true;
+            }else{
+                alert("密码格式错误，提交失败，请重新填写！");
+                console.log("密码格式错误，提交失败，请重新填写！");
+                return false;
+            }
+        }else{
+            alert("登录的账号格式不符合要求，提交失败，请重新填写！");
+            console.log("登录的账号格式不符合要求，提交失败，请重新填写！");
+            return false;
+        }
+    }
+</script>
+
+<body>
+    <section>
+        <!-- 背景颜色 -->
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="box">
+            <!-- 背景圆 -->
+            <div class="circle" style="--x:0"></div>
+            <div class="circle" style="--x:1"></div>
+            <div class="circle" style="--x:2"></div>
+            <div class="circle" style="--x:3"></div>
+            <div class="circle" style="--x:4"></div>
+            <div class="circle" style="--x:5"></div>  
+            <div class="circle" style="--x:6"></div>         
+            <!-- 登录框 -->
+            <div class="container">
+                <div class="form">
+                    <h2>登录</h2>
+                    <form action="log.php" method="post" name="form" class="inputBox">
+                        <table>
+                            <input type="text" id="username" name="username" placeholder="用户名由数字，下划线和字母组成，且第一个为字母" onblur="validate_username(this.value)"/>
+                            <td id="test_user"></td>
+                        
+                        <div class="inputBox">
+                            <input type="password" id="password" name="password" placeholder="8-20位密码由数字和字母组成" onblur="validate_password(this.value)"/></td>
+                <td id="test_pw"></td>
+ 
+                        </div>
+                        <div class="inputBox">
+                            <input type="submit" id="submit_form" value="登录"  onclick="return validate_form()"/>
+ 
+                        </div>
+                        <p class="forget">忘记密码?<a href="#">
+                                点击这里
+                            </a></p>
+                        <p class="forget">没有账户?<a href="login.html">
+                                注册
+                            </a></p>
+                      </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+ 
+</html>
